@@ -15,7 +15,8 @@ function loadMarkdown(filePath) {
   fetch(filePath)
     .then(response => response.text())
     .then(text => {
-      const htmlContent = marked(text); // Markdown in HTML umwandeln
+      // Verwende die neue API von `marked`
+      const htmlContent = marked.parse(text);  // Statt `marked(text)` jetzt `marked.parse(text)`
       document.getElementById("content").innerHTML = htmlContent; // Inhalt anzeigen
     })
     .catch(error => {
