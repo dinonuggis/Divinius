@@ -1,3 +1,9 @@
+---
+image: "images/gottheiten/anarok.png"
+---
+
+#Anarok - Gott der Zerstörung
+
 ## Allgemeines
 
 - **Titel / Beiname:** Der Weltenbrecher, Der Letzte Sturm
