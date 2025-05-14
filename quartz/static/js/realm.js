@@ -26,7 +26,7 @@ function loadRealmInfo(realmName) {
       const html = marked.parse(markdown);
       document.getElementById("content").innerHTML = `
         <div class="top-bar">
-          <button class="home-button" onclick="showRealmOverview()">Zurück zur Übersicht</button>
+          <button class="home-button" onclick="showRealm()">Zurück zur Übersicht</button>
         </div>
         <div class="portrait-layout">
           <div class="text-column">${html}</div>
