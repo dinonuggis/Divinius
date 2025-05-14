@@ -7,151 +7,179 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
+      margin: 0;
       display: flex;
       height: 100vh;
-      background-color: #2c3e50;
-      color: #ecf0f1;
+      background-color: #1e1e1e;
+      color: #f5f5f5;
     }
 
     .sidebar {
       width: 250px;
       background-color: #2c3e50;
-      position: fixed;
-      height: 100%;
-      overflow-y: auto;
       padding-top: 20px;
-      border-right: 1px solid #34495e;
+      height: 100vh;
+      overflow-y: auto;
+      position: fixed;
     }
 
-    .sidebar a, .sidebar button.toggle-btn {
+    .sidebar a {
       display: block;
-      width: 100%;
-      background: none;
-      border: none;
       color: white;
-      text-align: left;
       padding: 12px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s;
       text-decoration: none;
+      font-size: 16px;
     }
 
-    .sidebar a:hover, .sidebar button.toggle-btn:hover {
+    .sidebar a:hover {
       background-color: #34495e;
-    }
-
-    .sub-menu {
-      display: none;
-      padding-left: 10px;
     }
 
     .content {
       margin-left: 250px;
-      padding: 20px;
-      width: calc(100% - 250px);
+      padding: 30px;
+      flex: 1;
       overflow-y: auto;
-      height: 100vh;
     }
 
     .portrait-layout {
       display: flex;
-      flex-direction: column;
-      gap: 10px;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
     }
 
-    .image-top-right {
-      display: flex;
-      justify-content: flex-end;
-      margin-bottom: 10px;
+    .portrait-layout .text-column {
+      flex: 1;
     }
 
-    .portrait-img {
-      width: auto;
-      height: 230px; /* ca. 15% größer als 200px Standardgröße */
+    .portrait-layout .image-column img {
+      max-width: 250px;
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .gods-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+    }
+
+    .god-card {
+      background-color: #34495e;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .god-card:hover {
+      transform: scale(1.05);
+      background-color: #3e5871;
+    }
+
+    .god-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
       border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      margin-bottom: 10px;
     }
 
     .top-bar {
-      margin-bottom: 10px;
+      margin-bottom: 20px;
     }
 
     .home-button {
-      padding: 10px 15px;
-      font-size: 14px;
-      background-color: #34495e;
-      border: none;
+      padding: 8px 16px;
+      background-color: #2980b9;
       color: white;
-      border-radius: 4px;
+      border: none;
+      border-radius: 6px;
       cursor: pointer;
     }
 
     .home-button:hover {
-      background-color: #3d566e;
+      background-color: #3498db;
     }
   </style>
 </head>
 <body>
 
+  <!-- Sidebar -->
   <div class="sidebar">
-    <button class="toggle-btn" onclick="toggleMenu('godsMenu')">Götter ▼</button>
-    <div id="godsMenu" class="sub-menu">
-      <a href="#" onclick="loadMarkdown('content/Gottheiten/Anarok.md', 'static/images/gottheiten/anarok.png')">Anarok</a>
-      <a href="#" onclick="loadMarkdown('content/Gottheiten/Dormar.md', 'static/images/gottheiten/dormar.png')">Dormar</a>
-      <a href="#" onclick="loadMarkdown('content/Gottheiten/Elyra.md', 'static/images/gottheiten/elyra.png')">Elyra</a>
-      <a href="#" onclick="loadMarkdown('content/Gottheiten/Ignara.md', 'static/images/gottheiten/ignara.png')">Ignara</a>
-      <a href="#" onclick="loadMarkdown('content/Gottheiten/Korrum.md', 'static/images/gottheiten/korrum.png')">Korrum</a>
-      <a href="#" onclick="loadMarkdown('content/Gottheiten/Luminara.md', 'static/images/gottheiten/luminara.png')">Luminara</a>
-      <a href="#" onclick="loadMarkdown('content/Gottheiten/Nilara.md', 'static/images/gottheiten/nilara.png')">Nilara</a>
-      <a href="#" onclick="loadMarkdown('content/Gottheiten/Pandora.md', 'static/images/gottheiten/pandora.png')">Pandora</a>
-      <a href="#" onclick="loadMarkdown('content/Gottheiten/Regalis.md', 'static/images/gottheiten/regalis.png')">Regalis</a>
-      <a href="#" onclick="loadMarkdown('content/Gottheiten/Terrana.md', 'static/images/gottheiten/terrana.png')">Terrana</a>
-      <a href="#" onclick="loadMarkdown('content/Gottheiten/Umbra.md', 'static/images/gottheiten/umbra.png')">Umbra</a>
-      <a href="#" onclick="loadMarkdown('content/Gottheiten/Virak.md', 'static/images/gottheiten/virak.png')">Virak</a>
-    </div>
     <a href="#" onclick="showFrontpage()">Startseite</a>
+    <a href="#" onclick="showGodsOverview()">Götter</a>
   </div>
 
+  <!-- Main Content -->
   <div class="content" id="content">
     <h1>Willkommen zu Divinius!</h1>
-    <p>Wähle eine Gottheit aus dem Menü links, um mehr zu erfahren.</p>
+    <p>Erkunde unser Pantheon!.</p>
   </div>
 
   <script>
-    function toggleMenu(id) {
-      const menu = document.getElementById(id);
-      menu.style.display = menu.style.display === "block" ? "none" : "block";
-    }
+    const gods = [
+      { name: "Anarok", title: "Gott der Zerstörung" },
+      { name: "Dormar", title: "Gott des Stillstands" },
+      { name: "Elyra", title: "Göttin der Magie" },
+      { name: "Ignara", title: "Göttin des Feuers & der Schmiede" },
+      { name: "Korrum", title: "Gott des Verfalls" },
+      { name: "Luminara", title: "Göttin des Lichts" },
+      { name: "Nilara", title: "Göttin der Leere" },
+      { name: "Pandora", title: "Göttin des Chaos" },
+      { name: "Regalis", title: "Gott der Ordnung" },
+      { name: "Terrana", title: "Göttin der Natur" },
+      { name: "Umbra", title: "Göttin der Dunkelheit" },
+      { name: "Virak", title: "Gott der Alchemie" }
+    ];
 
     function showFrontpage() {
       document.getElementById("content").innerHTML = `
         <h1>Willkommen zu Divinius!</h1>
-        <p>Wähle eine Gottheit aus dem Menü links, um mehr zu erfahren.</p>
+        <p>Erkunde das Pantheon, die Geschichten und das Wissen dieser fantastischen Welt.</p>
       `;
     }
 
-    async function loadMarkdown(mdPath, imagePath) {
-      const res = await fetch(mdPath);
+    function showGodsOverview() {
+      let html = `<h2>Götterübersicht</h2><div class="gods-gallery">`;
+
+      gods.forEach(god => {
+        const imgPath = \`quartz/static/images/gottheiten/\${god.name.toLowerCase()}.png\`;
+        html += `
+          <div class="god-card" onclick="loadMarkdown('content/Gottheiten/${god.name}.md', '${imgPath}')">
+            <img src="${imgPath}" alt="${god.name}" />
+            <strong>${god.name}</strong><br/>
+            <small>${god.title}</small>
+          </div>
+        `;
+      });
+
+      html += `</div>`;
+      document.getElementById("content").innerHTML = html;
+    }
+
+    async function loadMarkdown(path, imagePath) {
+      const res = await fetch(path);
       const text = await res.text();
       const html = marked.parse(text);
 
-      const imageHTML = imagePath
-        ? `<div class="image-top-right"><img src="${imagePath}" alt="Bild" class="portrait-img"></div>`
-        : '';
-
       document.getElementById("content").innerHTML = `
         <div class="top-bar">
-          <button class="home-button" onclick="showFrontpage()">Zurück zur Startseite</button>
+          <button class="home-button" onclick="showGodsOverview()">Zurück zur Übersicht</button>
         </div>
         <div class="portrait-layout">
-          ${imageHTML}
           <div class="text-column">${html}</div>
+          <div class="image-column">
+            <img src="${imagePath}" alt="Portrait" />
+          </div>
         </div>
       `;
     }
   </script>
+
 </body>
 </html>
