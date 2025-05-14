@@ -179,28 +179,40 @@
             `;
         }
 
-        async function loadMarkdown(path) {
-            const res = await fetch(path);
-            const text = await res.text();
-            const html = marked.parse(text);
+async function loadMarkdown(path) {
+    const res = await fetch(path);
+    const text = await res.text();
+    const html = marked.parse(text);
 
-            const filename = path.split("/").pop().split(".")[0].toLowerCase();
-            const imagePath = `images/gottheiten/${filename}.jpg`;
+    const filename = path.split("/").pop().split(".")[0].toLowerCase();
 
-            document.getElementById("content").innerHTML = `
-                <div class="top-bar">
-                    <button class="home-button" onclick="showFrontpage()">Zurück zur Startseite</button>
-                </div>
-                <div class="portrait-layout">
-                    <div class="text-column">
-                        ${html}
-                    </div>
-                    <div class="image-column">
-                        <img src="${imagePath}" alt="${filename}" class="portrait-img" onerror="this.style.display='none'">
-                    </div>
-                </div>
-            `;
-        }
+    // Versuche .png, fallback auf .jpg
+    let imagePath = `images/gottheiten/${filename}.png`;
+    let imageExists = await fetch(imagePath).then(r => r.ok).catch(() => false);
+
+    if (!imageExists) {
+        imagePath = `images/gottheiten/${filename}.jpg`;
+        imageExists = await fetch(imagePath).then(r => r.ok).catch(() => false);
+    }
+
+    const imageHTML = imageExists
+        ? `<img src="${imagePath}" alt="${filename}" class="portrait-img">`
+        : '';
+
+    document.getElementById("content").innerHTML = `
+        <div class="top-bar">
+            <button class="home-button" onclick="showFrontpage()">Zurück zur Startseite</button>
+        </div>
+        <div class="portrait-layout">
+            <div class="text-column">
+                ${html}
+            </div>
+            <div class="image-column">
+                ${imageHTML}
+            </div>
+        </div>
+    `;
+}
 
         function toggleDropdown() {
             const dropdown = document.querySelector('.dropdown-container');
