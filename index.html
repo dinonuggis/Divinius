@@ -63,11 +63,6 @@
             overflow-y: auto;
             height: 100vh;
             color: #ecf0f1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            text-align: center;
         }
 
         .logo {
@@ -82,6 +77,36 @@
 
         p {
             color: #bdc3c7;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .home-button {
+            background-color: #f39c12;
+            color: #2c3e50;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .home-button:hover {
+            background-color: #e67e22;
+        }
+
+        .frontpage {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            height: calc(100vh - 40px);
         }
     </style>
 </head>
@@ -108,28 +133,46 @@
 </div>
 
 <div class="content" id="content">
-    <!-- Logo + Intro -->
-    <svg class="logo" viewBox="0 0 500 100" xmlns="http://www.w3.org/2000/svg">
-        <text x="50%" y="60%" text-anchor="middle" font-size="48" fill="#f39c12" font-family="Georgia, serif">
-            Divinius
-        </text>
-    </svg>
-    <h1>Willkommen zu Divinius!</h1>
-    <p>Tritt ein in eine Welt voller Magie, Götter und Geheimnisse.</p>
+    <!-- Die Frontpage wird hier beim Start und beim Klick auf „Zurück zur Startseite“ angezeigt -->
 </div>
 
 <script>
+function showFrontpage() {
+    document.getElementById("content").innerHTML = `
+        <div class="top-bar">
+            <!-- Kein Zurück-Button auf der Startseite -->
+        </div>
+        <div class="frontpage">
+            <svg class="logo" viewBox="0 0 500 100" xmlns="http://www.w3.org/2000/svg">
+                <text x="50%" y="60%" text-anchor="middle" font-size="48" fill="#f39c12" font-family="Georgia, serif">
+                    Divinius
+                </text>
+            </svg>
+            <h1>Willkommen zu Divinius!</h1>
+            <p>Tritt ein in eine Welt voller Magie, Götter und Geheimnisse.</p>
+        </div>
+    `;
+}
+
 async function loadMarkdown(path) {
     const res = await fetch(path);
     const text = await res.text();
     const html = marked.parse(text);
-    document.getElementById("content").innerHTML = html;
+    document.getElementById("content").innerHTML = `
+        <div class="top-bar">
+            <button class="home-button" onclick="showFrontpage()">Zurück zur Startseite</button>
+        </div>
+        ${html}
+    `;
 }
 
 function toggleDropdown() {
     const dropdown = document.querySelector('.dropdown-container');
     dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
 }
+
+// Beim Laden der Seite Startseite zeigen
+showFrontpage();
 </script>
 
 </body>
