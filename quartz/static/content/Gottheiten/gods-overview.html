@@ -1,0 +1,53 @@
+<h2>Götterübersicht</h2>
+<div class="gods-gallery">
+  <div class="god-card">
+    <img src="quartz/static/images/gottheiten/anarok.png" alt="Anarok" />
+    <strong>Anarok</strong><br/>
+    <small>Gott der Zerstörung</small>
+  </div>
+  <div class="god-card">
+    <img src="quartz/static/images/gottheiten/dormar.png" alt="Dormar" />
+    <strong>Dormar</strong><br/>
+    <small>Gott des Stillstands</small>
+  </div>
+  <div class="god-card">
+    <img src="quartz/static/images/gottheiten/elyra.png" alt="Elyra" />
+    <strong>Elyra</strong><br/>
+    <small>Göttin der Magie</small>
+  </div>
+  <!-- Weitere Götter hier hinzufügen -->
+</div>
+
+<script>
+  // Jede Karte lädt eine detaillierte Ansicht des Gottes
+  document.querySelectorAll('.god-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const godName = card.querySelector('strong').innerText;
+      const imgPath = card.querySelector('img').src;
+      loadGodDetail(godName, imgPath);
+    });
+  });
+
+  // Lädt die Details eines Gottes
+  function loadGodDetail(godName, imgPath) {
+    fetch(`content/Gottheiten/${godName}.md`)
+      .then(response => response.text())
+      .then(markdownText => {
+        const html = marked.parse(markdownText);
+        document.getElementById('content').innerHTML = `
+          <div class="top-bar">
+            <button class="home-button" onclick="loadPage('gods-overview')">Zurück zur Übersicht</button>
+          </div>
+          <div class="portrait-layout">
+            <div class="text-column">${html}</div>
+            <div class="image-column">
+              <img src="${imgPath}" alt="Portrait" />
+            </div>
+          </div>
+        `;
+      })
+      .catch(error => {
+        console.error('Fehler beim Laden des Gottesdetails:', error);
+      });
+  }
+</script>
