@@ -151,7 +151,7 @@
       let html = `<h2>Götterübersicht</h2><div class="gods-gallery">`;
 
       gods.forEach(god => {
-        const imgPath = `static/images/gottheiten/${god.name.toLowerCase()}.png`;
+        const imgPath = `quartz/static/images/gottheiten/${god.name.toLowerCase()}.png`;
         html += `
           <div class="god-card" onclick="loadMarkdown('content/Gottheiten/${god.name}.md', '${imgPath}')">
             <img src="${imgPath}" alt="${god.name}" />
