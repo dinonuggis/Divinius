@@ -112,16 +112,17 @@
   <!-- Sidebar -->
   <div class="sidebar">
     <a href="#" onclick="showFrontpage()">Startseite</a>
-    <a href="#" onclick="showGodsOverview()">Götter</a>
+    <a href="#" onclick="showGodsOverview()">Götterübersicht</a>
   </div>
 
   <!-- Main Content -->
   <div class="content" id="content">
     <h1>Willkommen zu Divinius!</h1>
-    <p>Erkunde unser Pantheon!.</p>
+    <p>Erkunde das Pantheon, die Geschichten und das Wissen dieser fantastischen Welt.</p>
   </div>
 
   <script>
+    // Liste der Götter
     const gods = [
       { name: "Anarok", title: "Gott der Zerstörung" },
       { name: "Dormar", title: "Gott des Stillstands" },
@@ -137,6 +138,7 @@
       { name: "Virak", title: "Gott der Alchemie" }
     ];
 
+    // Startseite anzeigen
     function showFrontpage() {
       document.getElementById("content").innerHTML = `
         <h1>Willkommen zu Divinius!</h1>
@@ -144,11 +146,12 @@
       `;
     }
 
+    // Götterübersicht anzeigen
     function showGodsOverview() {
       let html = `<h2>Götterübersicht</h2><div class="gods-gallery">`;
 
       gods.forEach(god => {
-        const imgPath = \`quartz/static/images/gottheiten/\${god.name.toLowerCase()}.png\`;
+        const imgPath = `static/images/gottheiten/${god.name.toLowerCase()}.png`;
         html += `
           <div class="god-card" onclick="loadMarkdown('content/Gottheiten/${god.name}.md', '${imgPath}')">
             <img src="${imgPath}" alt="${god.name}" />
@@ -162,6 +165,7 @@
       document.getElementById("content").innerHTML = html;
     }
 
+    // Markdown-Datei laden und Bild anzeigen
     async function loadMarkdown(path, imagePath) {
       const res = await fetch(path);
       const text = await res.text();
