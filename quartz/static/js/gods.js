@@ -29,7 +29,7 @@ function showGodsOverview() {
 // Einzelnen Gott laden
 function loadGodInfo(godName) {
   const mdPath = `quartz/static/content/Gottheiten/${godName}.md`;
-  const imgPath = `quartz/static/content/images/gottheiten/${godName.toLowerCase()}.png`;
+  const imgPath = `quartz/static/images/gottheiten/${godName.toLowerCase()}.png`;
 
   fetch(mdPath)
     .then(response => {
