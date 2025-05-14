@@ -1,16 +1,3 @@
-// Startseite anzeigen
-function showFrontpage() {
-  document.getElementById("content").innerHTML = `
-    <h1>Willkommen zu Divinius!</h1>
-    <p>Erkunde das Pantheon, die Geschichten und das Wissen dieser fantastischen Welt.</p>
-    <div class="category-gallery">
-      <div class="category-card" onclick="showRealmOverview()">
-        Reiche
-      </div>
-    </div>
-  `;
-}
-
 function showRealm() {
   fetch("quartz/static/content/Reiche/realms-overview.html")
     .then(response => {
