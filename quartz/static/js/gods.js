@@ -1,7 +1,23 @@
-// Lädt die Übersicht
+// Startseite anzeigen
+function showFrontpage() {
+  document.getElementById("content").innerHTML = `
+    <h1>Willkommen zu Divinius!</h1>
+    <p>Erkunde das Pantheon, die Geschichten und das Wissen dieser fantastischen Welt.</p>
+    <div class="category-gallery">
+      <div class="category-card" onclick="showGodsOverview()">
+        Gottheiten
+      </div>
+    </div>
+  `;
+}
+
+// Götterübersicht laden
 function showGodsOverview() {
   fetch("quartz/static/content/Gottheiten/gods-overview.html")
-    .then(response => response.text())
+    .then(response => {
+      if (!response.ok) throw new Error("Datei nicht gefunden");
+      return response.text();
+    })
     .then(html => {
       document.getElementById("content").innerHTML = html;
     })
@@ -10,10 +26,16 @@ function showGodsOverview() {
     });
 }
 
-// Lädt die Markdown + Bild für eine Gottheit
+// Einzelnen Gott laden
 function loadGodInfo(godName) {
-  fetch(`quartz/static/content/Gottheiten/${godName}.md`)
-    .then(response => response.text())
+  const mdPath = `quartz/static/content/Gottheiten/${godName}.md`;
+  const imgPath = `quartz/static/content/images/gottheiten/${godName.toLowerCase()}.png`;
+
+  fetch(mdPath)
+    .then(response => {
+      if (!response.ok) throw new Error("MD-Datei nicht gefunden");
+      return response.text();
+    })
     .then(markdown => {
       const html = marked.parse(markdown);
       document.getElementById("content").innerHTML = `
@@ -23,12 +45,12 @@ function loadGodInfo(godName) {
         <div class="portrait-layout">
           <div class="text-column">${html}</div>
           <div class="image-column">
-            <img src="quartz/static/content/images/gottheiten/${godName.toLowerCase()}.png" alt="${godName}" />
+            <img src="${imgPath}" alt="${godName}" />
           </div>
         </div>
       `;
     })
     .catch(err => {
-      console.error("Fehler beim Laden der MD-Datei:", err);
+      console.error("Fehler beim Laden der Gottheit:", err);
     });
 }
