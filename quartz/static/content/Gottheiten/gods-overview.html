@@ -15,6 +15,11 @@
     <strong>Elyra</strong><br/>
     <small>Göttin der Magie</small>
   </div>
+  <div class="god-card">
+    <img src="quartz/static/images/gottheiten/ignara.png" alt="Ignara" />
+    <strong>Ignara</strong><br/>
+    <small>Göttin des Feuers & der Schmiede</small>
+  </div>
   <!-- Weitere Götter hier hinzufügen -->
 </div>
 
@@ -30,7 +35,7 @@
 
   // Lädt die Details eines Gottes
   function loadGodDetail(godName, imgPath) {
-    fetch(`quartz/static/content/Gottheiten/${godName}.md`)
+    fetch(`content/Gottheiten/${godName}.md`)
       .then(response => response.text())
       .then(markdownText => {
         const html = marked.parse(markdownText);
