@@ -1,3 +1,33 @@
-<link rel="stylesheet" href="quartz/static/css/style.css">
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script src="quartz/static/js/gods.js"></script>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Divinius</title>
+  <link rel="stylesheet" href="quartz/static/css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="quartz/static/js/gods.js" defer></script>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <a href="#" onclick="showFrontpage()">Startseite</a>
+    <a href="#" onclick="showGodsOverview()">Götterübersicht</a>
+  </div>
+
+  <!-- Hauptinhalt -->
+  <div class="content" id="content">
+    <h1>Willkommen zu Divinius!</h1>
+    <p>Erkunde das Pantheon, die Geschichten und das Wissen dieser fantastischen Welt.</p>
+
+    <div class="category-gallery">
+      <div class="category-card" onclick="showGodsOverview()">
+        Gottheiten
+      </div>
+      <!-- Weitere Karten kannst du hier ergänzen -->
+    </div>
+  </div>
+
+</body>
+</html>
