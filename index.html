@@ -182,27 +182,28 @@
 async function loadMarkdown(path) {
     const res = await fetch(path);
     const text = await res.text();
-    const html = marked.parse(text);
 
-    // Extrahiere den Dateinamen aus dem Pfad (z. B. 'anarok')
-    const filename = path.split("/").pop().split(".")[0].toLowerCase();
+    // Extrahiere Frontmatter aus der Markdown-Datei (Beispiel mit regex)
+    const frontmatterRegex = /---\n([\s\S]+?)\n---/;
+    const match = text.match(frontmatterRegex);
+    let imagePath = null;
 
-    // Versuche, das .png-Bild zu laden (ersetze den relativen Pfad)
-    let imagePath = `images/gottheiten/${filename}.png`;
-    let imageExists = await fetch(imagePath).then(r => r.ok).catch(() => false);
-
-    // Fallback auf .jpg, wenn das .png nicht existiert
-    if (!imageExists) {
-        imagePath = `images/gottheiten/${filename}.jpg`;
-        imageExists = await fetch(imagePath).then(r => r.ok).catch(() => false);
+    if (match) {
+        const frontmatter = match[1];
+        const imageMatch = frontmatter.match(/image:\s*(.*)/);
+        if (imageMatch) {
+            imagePath = imageMatch[1].trim();
+        }
     }
 
-    // Bild-HTML generieren, falls das Bild existiert
-    const imageHTML = imageExists
-        ? `<img src="${imagePath}" alt="${filename}" class="portrait-img">`
+    // Markdown-Inhalt parsen
+    const html = marked.parse(text.replace(frontmatterRegex, ''));
+
+    // HTML für das Bild
+    const imageHTML = imagePath 
+        ? `<img src="${imagePath}" alt="Götterbild" class="portrait-img">` 
         : '';
 
-    // Füge den Markdown-Inhalt und das Bild in das HTML ein
     document.getElementById("content").innerHTML = `
         <div class="top-bar">
             <button class="home-button" onclick="showFrontpage()">Zurück zur Startseite</button>
