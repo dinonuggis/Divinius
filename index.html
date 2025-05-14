@@ -38,26 +38,57 @@
         .sidebar a:hover {
             background-color: #34495e;
         }
+        .sidebar .dropdown-btn{
+            display: block;
+            background-color: #34495e;
+            padding: 12px 20px;
+            font-size: 18px;
+            text-decoration: none;
+            color: #ecf0f1;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+        }
+
+
+        .dropdown-container {
+            display: none;
+            padding-left: 20px;
+        }
+        .dropdown-container a {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
 
         .content {
             margin-left: 270px;
             padding: 20px;
             width: 100%;
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(103, 103, 103, 0.8);
             border-radius: 10px;
             overflow-y: auto;
             height: 100vh;
+            color: #ecf0f1;
         }
-
+        
         .sub-menu {
             padding-left: 20px;
         }
+        h1 {
+            color: #f39c12;
+        }
+        p {
+            color: #bdc3c7
+        }
+        
     </style>
 </head>
 <body>
 
     <!-- Sidebar -->
     <div class="sidebar">
+        <button class="dropdown-btn" conlick="toggleDropDown()">Götter</button>
+        <div class="dropdown-container">
         <a href="#" onclick="loadMarkdown('content/Gottheiten/Anarok.md')">Anarok - Gott der Zerstörung</a>
         <a href="#" onclick="loadMarkdown('content/Gottheiten/Dormar.md')">Dormar - Gott des Stillstandes</a>
         <a href="#" onclick="loadMarkdown('content/Gottheiten/Elyra.md')">Elyra - Gottin der Magie</a>
