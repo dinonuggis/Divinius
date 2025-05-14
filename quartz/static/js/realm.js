@@ -3,8 +3,7 @@ function loadMarkdown(filePath) {
   fetch(filePath)
     .then(response => response.text())
     .then(text => {
-      // Die Markdown-Datei wurde erfolgreich geladen, nun den Inhalt umwandeln
-      const htmlContent = marked(text);  // Markdown in HTML umwandeln
+      const htmlContent = marked(text); // Markdown in HTML umwandeln
       document.getElementById("content").innerHTML = htmlContent; // Inhalt anzeigen
     })
     .catch(error => {
@@ -45,12 +44,12 @@ function showRealm() {
 
   // Dynamisch Karten für jedes Reich erstellen
   realms.forEach(realm => {
-    const godCard = document.createElement("div");
-    godCard.classList.add("category-card");
-    godCard.innerText = realm.name;
-    godCard.onclick = function () {
+    const realmCard = document.createElement("div");
+    realmCard.classList.add("category-card");
+    realmCard.innerText = realm.name;
+    realmCard.onclick = function () {
       loadMarkdown(realm.file);  // Die .md-Datei des Reiches laden
     };
-    content.appendChild(godCard);
+    content.appendChild(realmCard);
   });
 }
