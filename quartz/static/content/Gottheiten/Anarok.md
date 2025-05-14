@@ -1,5 +1,5 @@
 ---
-image: "images/gottheiten/anarok.png"
+image: "static/images/gottheiten/anarok.png"
 ---
 
 #Anarok - Gott der Zerstörung
