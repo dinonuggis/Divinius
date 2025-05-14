@@ -15,9 +15,9 @@ function loadMarkdown(filePath) {
   fetch(filePath)
     .then(response => response.text())
     .then(text => {
-      // Verwende die neue API von `marked`
-      const htmlContent = marked.parse(text);  // Statt `marked(text)` jetzt `marked.parse(text)`
-      document.getElementById("content").innerHTML = htmlContent; // Inhalt anzeigen
+      // Verwende die Methode "parse" der neuen Version von marked
+      const htmlContent = marked.parse(text);  // Ändere marked(text) zu marked.parse(text)
+      document.getElementById("content").innerHTML = htmlContent; // Zeigt den Inhalt an
     })
     .catch(error => {
       console.error("Fehler beim Laden der Datei:", error);
