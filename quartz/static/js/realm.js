@@ -11,8 +11,7 @@ function showFrontpage() {
   `;
 }
 
-// Reicheübersicht laden
-function showRealmOverview() {
+function showRealm() {
   fetch("quartz/static/content/Reiche/realms-overview.html")
     .then(response => {
       if (!response.ok) throw new Error("Datei nicht gefunden");
@@ -22,7 +21,7 @@ function showRealmOverview() {
       document.getElementById("content").innerHTML = html;
     })
     .catch(err => {
-      console.error("Fehler beim Laden der Reicheübersicht:", err);
+      console.error("Fehler beim Laden der Reiche-Übersicht:", err);
     });
 }
 
