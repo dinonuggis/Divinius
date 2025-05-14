@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Divinius</title>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
@@ -25,6 +25,7 @@
             left: 0;
             padding-top: 20px;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            overflow-y: auto;
         }
 
         .sidebar a, .dropdown-btn {
@@ -108,72 +109,107 @@
             text-align: center;
             height: calc(100vh - 40px);
         }
+
+        .portrait-layout {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .text-column {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .image-column {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .portrait-img {
+            max-width: 100%;
+            max-height: 400px;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+        }
     </style>
 </head>
 <body>
 
-<div class="sidebar">
-    <button class="dropdown-btn" onclick="toggleDropdown()">Götter</button>
-    <div class="dropdown-container">
-        <a href="#" onclick="loadMarkdown('content/Gottheiten/Anarok.md')">Anarok</a>
-        <a href="#" onclick="loadMarkdown('content/Gottheiten/Dormar.md')">Dormar</a>
-        <a href="#" onclick="loadMarkdown('content/Gottheiten/Elyra.md')">Elyra</a>
-        <a href="#" onclick="loadMarkdown('content/Gottheiten/Ignara.md')">Ignara</a>
-        <a href="#" onclick="loadMarkdown('content/Gottheiten/Korrum.md')">Korrum</a>
-        <a href="#" onclick="loadMarkdown('content/Gottheiten/Luminara.md')">Luminara</a>
-        <a href="#" onclick="loadMarkdown('content/Gottheiten/Nilara.md')">Nilara</a>
-        <a href="#" onclick="loadMarkdown('content/Gottheiten/Pandora.md')">Pandora</a>
-        <a href="#" onclick="loadMarkdown('content/Gottheiten/Regalis.md')">Regalis</a>
-        <a href="#" onclick="loadMarkdown('content/Gottheiten/Terrana.md')">Terrana</a>
-        <a href="#" onclick="loadMarkdown('content/Gottheiten/Umbra.md')">Umbra</a>
-        <a href="#" onclick="loadMarkdown('content/Gottheiten/Virak.md')">Virak</a>
+    <div class="sidebar">
+        <button class="dropdown-btn" onclick="toggleDropdown()">Götter</button>
+        <div class="dropdown-container">
+            <a href="#" onclick="loadMarkdown('content/Gottheiten/Anarok.md')">Anarok</a>
+            <a href="#" onclick="loadMarkdown('content/Gottheiten/Dormar.md')">Dormar</a>
+            <a href="#" onclick="loadMarkdown('content/Gottheiten/Elyra.md')">Elyra</a>
+            <a href="#" onclick="loadMarkdown('content/Gottheiten/Ignara.md')">Ignara</a>
+            <a href="#" onclick="loadMarkdown('content/Gottheiten/Korrum.md')">Korrum</a>
+            <a href="#" onclick="loadMarkdown('content/Gottheiten/Luminara.md')">Luminara</a>
+            <a href="#" onclick="loadMarkdown('content/Gottheiten/Nilara.md')">Nilara</a>
+            <a href="#" onclick="loadMarkdown('content/Gottheiten/Pandora.md')">Pandora</a>
+            <a href="#" onclick="loadMarkdown('content/Gottheiten/Regalis.md')">Regalis</a>
+            <a href="#" onclick="loadMarkdown('content/Gottheiten/Terrana.md')">Terrana</a>
+            <a href="#" onclick="loadMarkdown('content/Gottheiten/Umbra.md')">Umbra</a>
+            <a href="#" onclick="loadMarkdown('content/Gottheiten/Virak.md')">Virak</a>
+        </div>
+        <a href="#" onclick="loadMarkdown('content/Geschichte.md')">Geschichte</a>
+        <a href="#" onclick="loadMarkdown('content/Allgemeine Einleitung.md')">Einleitung</a>
     </div>
-    <a href="#" onclick="loadMarkdown('Content/Geschichte.md')">Geschichte</a>
-    <a href="#" onclick="loadMarkdown('Content/Allgemeine Einleitung.md')">Einleitung</a>
-</div>
 
-<div class="content" id="content">
-    <!-- Die Frontpage wird hier beim Start und beim Klick auf „Zurück zur Startseite“ angezeigt -->
-</div>
+    <div class="content" id="content">
+        <!-- Frontpage wird hier geladen -->
+    </div>
 
-<script>
-function showFrontpage() {
-    document.getElementById("content").innerHTML = `
-        <div class="top-bar">
-            <!-- Kein Zurück-Button auf der Startseite -->
-        </div>
-        <div class="frontpage">
-            <svg class="logo" viewBox="0 0 500 100" xmlns="http://www.w3.org/2000/svg">
-                <text x="50%" y="60%" text-anchor="middle" font-size="48" fill="#f39c12" font-family="Georgia, serif">
-                    Divinius
-                </text>
-            </svg>
-            <h1>Willkommen zu Divinius!</h1>
-            <p>Tritt ein in eine Welt voller Magie, Götter und Geheimnisse.</p>
-        </div>
-    `;
-}
+    <script>
+        function showFrontpage() {
+            document.getElementById("content").innerHTML = `
+                <div class="top-bar"></div>
+                <div class="frontpage">
+                    <svg class="logo" viewBox="0 0 500 100" xmlns="http://www.w3.org/2000/svg">
+                        <text x="50%" y="60%" text-anchor="middle" font-size="48" fill="#f39c12" font-family="Georgia, serif">
+                            Divinius
+                        </text>
+                    </svg>
+                    <h1>Willkommen zu Divinius!</h1>
+                    <p>Tritt ein in eine Welt voller Magie, Götter und Geheimnisse.</p>
+                </div>
+            `;
+        }
 
-async function loadMarkdown(path) {
-    const res = await fetch(path);
-    const text = await res.text();
-    const html = marked.parse(text);
-    document.getElementById("content").innerHTML = `
-        <div class="top-bar">
-            <button class="home-button" onclick="showFrontpage()">Zurück zur Startseite</button>
-        </div>
-        ${html}
-    `;
-}
+        async function loadMarkdown(path) {
+            const res = await fetch(path);
+            const text = await res.text();
+            const html = marked.parse(text);
 
-function toggleDropdown() {
-    const dropdown = document.querySelector('.dropdown-container');
-    dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
-}
+            const filename = path.split("/").pop().split(".")[0].toLowerCase();
+            const imagePath = `images/gottheiten/${filename}.jpg`;
 
-// Beim Laden der Seite Startseite zeigen
-showFrontpage();
-</script>
+            document.getElementById("content").innerHTML = `
+                <div class="top-bar">
+                    <button class="home-button" onclick="showFrontpage()">Zurück zur Startseite</button>
+                </div>
+                <div class="portrait-layout">
+                    <div class="text-column">
+                        ${html}
+                    </div>
+                    <div class="image-column">
+                        <img src="${imagePath}" alt="${filename}" class="portrait-img" onerror="this.style.display='none'">
+                    </div>
+                </div>
+            `;
+        }
+
+        function toggleDropdown() {
+            const dropdown = document.querySelector('.dropdown-container');
+            dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
+        }
+
+        // Initiale Anzeige
+        showFrontpage();
+    </script>
 
 </body>
 </html>
