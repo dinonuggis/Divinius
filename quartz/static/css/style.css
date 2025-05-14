@@ -63,7 +63,7 @@ body {
 /* Götterübersicht */
 .gods-gallery {
   display: grid;
-  grid-template-columns: repeat(4, minmax(250px, 1fr)); /* 4 Götter pro Zeile */
+  grid-template-columns: repeat(4, minmax(200px, 1fr)); /* 4 Götter pro Zeile */
   gap: 5px;
   margin-top: 5px;
 }
@@ -84,7 +84,7 @@ body {
 
 .god-card img {
   width: 100%;
-  height: 250px;
+  height: 300px;
   object-fit: cover;
   border-radius: 5px;
   margin-bottom: 5px;
