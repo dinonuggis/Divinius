@@ -184,21 +184,25 @@ async function loadMarkdown(path) {
     const text = await res.text();
     const html = marked.parse(text);
 
+    // Extrahiere den Dateinamen aus dem Pfad (z. B. 'anarok')
     const filename = path.split("/").pop().split(".")[0].toLowerCase();
 
-    // Versuche .png, fallback auf .jpg
+    // Versuche, das .png-Bild zu laden (ersetze den relativen Pfad)
     let imagePath = `images/gottheiten/${filename}.png`;
     let imageExists = await fetch(imagePath).then(r => r.ok).catch(() => false);
 
+    // Fallback auf .jpg, wenn das .png nicht existiert
     if (!imageExists) {
         imagePath = `images/gottheiten/${filename}.jpg`;
         imageExists = await fetch(imagePath).then(r => r.ok).catch(() => false);
     }
 
+    // Bild-HTML generieren, falls das Bild existiert
     const imageHTML = imageExists
         ? `<img src="${imagePath}" alt="${filename}" class="portrait-img">`
         : '';
 
+    // Füge den Markdown-Inhalt und das Bild in das HTML ein
     document.getElementById("content").innerHTML = `
         <div class="top-bar">
             <button class="home-button" onclick="showFrontpage()">Zurück zur Startseite</button>
