@@ -63,7 +63,7 @@ body {
 /* Götterübersicht */
 .gods-gallery {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 Götter pro Zeile */
+  grid-template-columns: repeat(4, minmax(220px, 1fr)); /* 4 Götter pro Zeile */
   gap: 20px;
   margin-top: 20px;
 }
