@@ -15,7 +15,7 @@ function showRealm() {
 // Einzelnes Reich laden
 function loadRealmInfo(realmName) {
   const mdPath = `quartz/static/content/Reiche/${realmName}.md`;
-  const imgPath = `quartz/static/images/Reiche/${realmName.toLowerCase()}.png`;
+  const imgPath = `quartz/static/images/reiche/${realmName.toLowerCase()}.png`;
 
   fetch(mdPath)
     .then(response => {
