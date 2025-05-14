@@ -1,3 +1,15 @@
+// Startseite anzeigen
+function showFrontpage() {
+  document.getElementById("content").innerHTML = `
+    <h1>Willkommen zu Divinius!</h1>
+    <p>Erkunde das Pantheon, die Geschichten und das Wissen dieser fantastischen Welt.</p>
+    <div class="category-gallery">
+      <div class="category-card" onclick="showGodsOverview()">
+        Gottheiten
+      </div>
+    </div>
+  `;
+}
 // Funktion, um eine Markdown-Datei zu laden
 function loadMarkdown(filePath) {
   fetch(filePath)
