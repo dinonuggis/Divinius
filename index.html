@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divinius</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: rgba(44, 62, 80, 0.8);
+            position: fixed;
+            height: 100%;
+            top: 0;
+            left: 0;
+            padding-top: 20px;
+            color: white;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            background-color: #34495e;
+        }
+
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            overflow-y: auto;
+            height: 100vh;
+        }
+
+        .sub-menu {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="#" onclick="loadMarkdown('content/Gottheiten/Anarok.md')">Anarok - Gott der Zerstörung</a>
+        <a href="#" onclick="loadMarkdown('content/Gottheiten/Dormar.md')">Dormar - Gott des Stillstandes</a>
+        <a href="#" onclick="loadMarkdown('content/Gottheiten/Elyra.md')">Elyra - Gottin der Magie</a>
+        <a href="#" onclick="loadMarkdown('content/Gottheiten/Ignara.md')">Ignara - Göttin des Feues & der Schmiede</a>
+        <a href="#" onclick="loadMarkdown('content/Gottheiten/Korrum.md')">Korrum - Gott des Verfalls</a>
+        <a href="#" onclick="loadMarkdown('content/Gottheiten/Luminara.md')">Luminara - Göttin des Lichts</a>
+        <a href="#" onclick="loadMarkdown('content/Gottheiten/Nilara.md')">Nilara - Göttin der Leere</a>
+        <a href="#" onclick="loadMarkdown('content/Gottheiten/Pandora.md')">Pandora - Göttin des Chaos</a>
+        <a href="#" onclick="loadMarkdown('content/Gottheiten/Regalis.md')">Regalis - Gott der Ordnung</a>
+        <a href="#" onclick="loadMarkdown('content/Gottheiten/Terrana.md')">Terrana - Göttin der Natur</a>
+        <a href="#" onclick="loadMarkdown('content/Gottheiten/Umbra.md')">Umbra - Göttin der Dunkelheit</a>
+        <a href="#" onclick="loadMarkdown('content/Gottheiten/Virak.md')">Virak - Gott der Alchemie</a>
+
+
+        <!-- Weitere Links zu anderen Unterordnern -->
+        <a href="#" onclick="loadMarkdown('Content/Geschichte.md')">soon</a>
+        <a href="#" onclick="loadMarkdown('Content/Allgemeine Einleitung.md')">soon</a>
+    </div>
+
+    <!-- Inhalt -->
+    <div class="content" id="content">
+        <h1>Willkommen zu Divinius!</h1>
+        <p>Hier kannst du die Geschichte von Divinius entdecken.</p>
+    </div>
+
+<script>
+async function loadMarkdown(path) {
+  const res = await fetch(path);
+  const text = await res.text();
+
+  // Optional: Markdown in HTML umwandeln (wenn du z. B. marked.js nutzt)
+  const html = marked.parse(text); // falls du marked.js eingebunden hast
+
+  // Anzeige in einem Element auf der Seite
+  document.getElementById("content").innerHTML = html;
+}
+</script>
+
+</body>
+</html>
