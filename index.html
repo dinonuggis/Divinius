@@ -88,6 +88,7 @@
   <!-- Header -->
   <div class="header">
     <h1>Willkommen zu Divinius!</h1>
+    <p>Erkunde das Pantheon und entdecke die Götter und ihre Geschichten.</p>
   </div>
 
   <!-- Main Content -->
@@ -114,11 +115,15 @@
   <script>
     // Funktion zum Laden der Götterübersicht
     function showGodsOverview() {
-      fetch('quartz/static/content/Gottheiten/gods-overview.html')
+      // Hier den Pfad zu gods-overview.html anpassen, wenn sie sich in einem Unterordner befindet.
+      fetch('quartz/static/content/Gottheiten/gods-overview.html') // Pfad anpassen
         .then(response => response.text())
         .then(html => {
-          document.body.innerHTML = html; // Lade die Götterübersicht
-          addBackButton(); // Füge den "Zurück zur Startseite"-Button hinzu
+          // Ersetze den gesamten Body-Inhalt mit der geladenen HTML-Datei
+          document.body.innerHTML = html;
+
+          // Füge den "Zurück zur Startseite"-Button hinzu
+          addBackButton();
         })
         .catch(error => {
           console.error('Fehler beim Laden der Götterübersicht:', error);
@@ -141,8 +146,8 @@
         window.location.reload(); // Seite neu laden, um zur Startseite zurückzukehren
       };
 
-      // Füge den Button unter dem Inhalt der Götterübersicht hinzu
-      document.getElementById('main-content').appendChild(backButton);
+      // Füge den Button in den Body des neuen Inhalts ein, an einer Stelle, die existiert
+      document.body.appendChild(backButton);
     }
   </script>
 
