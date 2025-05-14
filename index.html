@@ -43,52 +43,6 @@
       overflow-y: auto;
     }
 
-    .portrait-layout {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 20px;
-    }
-
-    .portrait-layout .text-column {
-      flex: 1;
-    }
-
-    .portrait-layout .image-column img {
-      max-width: 250px;
-      width: 100%;
-      border-radius: 10px;
-    }
-
-    .gods-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 20px;
-    }
-
-    .god-card {
-      background-color: #34495e;
-      padding: 15px;
-      border-radius: 10px;
-      text-align: center;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-
-    .god-card:hover {
-      transform: scale(1.05);
-      background-color: #3e5871;
-    }
-
-    .god-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 10px;
-    }
-
     .top-bar {
       margin-bottom: 20px;
     }
@@ -111,8 +65,8 @@
 
   <!-- Sidebar -->
   <div class="sidebar">
-    <a href="#" onclick="showFrontpage()">Startseite</a>
-    <a href="#" onclick="showGodsOverview()">Götterübersicht</a>
+    <a href="#" onclick="loadPage('home')">Startseite</a>
+    <a href="#" onclick="loadPage('gods-overview')">Götterübersicht</a>
   </div>
 
   <!-- Main Content -->
@@ -122,66 +76,28 @@
   </div>
 
   <script>
-    // Liste der Götter
-    const gods = [
-      { name: "Anarok", title: "Gott der Zerstörung" },
-      { name: "Dormar", title: "Gott des Stillstands" },
-      { name: "Elyra", title: "Göttin der Magie" },
-      { name: "Ignara", title: "Göttin des Feuers & der Schmiede" },
-      { name: "Korrum", title: "Gott des Verfalls" },
-      { name: "Luminara", title: "Göttin des Lichts" },
-      { name: "Nilara", title: "Göttin der Leere" },
-      { name: "Pandora", title: "Göttin des Chaos" },
-      { name: "Regalis", title: "Gott der Ordnung" },
-      { name: "Terrana", title: "Göttin der Natur" },
-      { name: "Umbra", title: "Göttin der Dunkelheit" },
-      { name: "Virak", title: "Gott der Alchemie" }
-    ];
-
-    // Startseite anzeigen
-    function showFrontpage() {
-      document.getElementById("content").innerHTML = `
-        <h1>Willkommen zu Divinius!</h1>
-        <p>Erkunde das Pantheon, die Geschichten und das Wissen dieser fantastischen Welt.</p>
-      `;
-    }
-
-    // Götterübersicht anzeigen
-    function showGodsOverview() {
-      let html = `<h2>Götterübersicht</h2><div class="gods-gallery">`;
-
-      gods.forEach(god => {
-        const imgPath = `quartz/static/images/gottheiten/${god.name.toLowerCase()}.png`;
-        html += `
-          <div class="god-card" onclick="loadMarkdown('content/Gottheiten/${god.name}.md', '${imgPath}')">
-            <img src="${imgPath}" alt="${god.name}" />
-            <strong>${god.name}</strong><br/>
-            <small>${god.title}</small>
-          </div>
+    // Lädt die entsprechende Seite
+    function loadPage(page) {
+      if (page === 'home') {
+        document.getElementById('content').innerHTML = `
+          <h1>Willkommen zu Divinius!</h1>
+          <p>Erkunde das Pantheon, die Geschichten und das Wissen dieser fantastischen Welt.</p>
         `;
-      });
-
-      html += `</div>`;
-      document.getElementById("content").innerHTML = html;
+      } else if (page === 'gods-overview') {
+        loadGodsOverview();
+      }
     }
 
-    // Markdown-Datei laden und Bild anzeigen
-    async function loadMarkdown(path, imagePath) {
-      const res = await fetch(path);
-      const text = await res.text();
-      const html = marked.parse(text);
-
-      document.getElementById("content").innerHTML = `
-        <div class="top-bar">
-          <button class="home-button" onclick="showGodsOverview()">Zurück zur Übersicht</button>
-        </div>
-        <div class="portrait-layout">
-          <div class="text-column">${html}</div>
-          <div class="image-column">
-            <img src="${imagePath}" alt="Portrait" />
-          </div>
-        </div>
-      `;
+    // Lädt die Götterübersicht von einer externen HTML-Datei
+    function loadGodsOverview() {
+      fetch('gods-overview.html')
+        .then(response => response.text())
+        .then(html => {
+          document.getElementById('content').innerHTML = html;
+        })
+        .catch(error => {
+          console.error('Fehler beim Laden der Götterübersicht:', error);
+        });
     }
   </script>
 
