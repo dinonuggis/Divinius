@@ -12,23 +12,25 @@
             padding: 0;
             display: flex;
             height: 100vh;
+            background-color: #2c3e50; /* Dunkelgrauer Hintergrund */
+            color: #ecf0f1; /* Helle Schriftfarbe für bessere Lesbarkeit */
         }
 
         .sidebar {
             width: 250px;
-            background-color: rgba(44, 62, 80, 0.8);
+            background-color: rgba(44, 62, 80, 0.9); /* Dunklere Sidebar */
             position: fixed;
             height: 100%;
             top: 0;
             left: 0;
             padding-top: 20px;
-            color: white;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            color: #ecf0f1; /* Helle Schrift in der Sidebar */
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
         }
 
         .sidebar a {
             display: block;
-            color: white;
+            color: #ecf0f1; /* Helle Schriftfarbe */
             padding: 12px 20px;
             text-decoration: none;
             font-size: 18px;
@@ -36,25 +38,27 @@
         }
 
         .sidebar a:hover {
-            background-color: #34495e;
+            background-color: #34495e; /* Etwas dunklerer Hintergrund beim Hover */
         }
-        .sidebar .dropdown-btn{
+
+        .sidebar .dropdown-btn {
             display: block;
             background-color: #34495e;
             padding: 12px 20px;
             font-size: 18px;
             text-decoration: none;
             color: #ecf0f1;
+            border: none;
             width: 100%;
             text-align: left;
             cursor: pointer;
         }
 
-
         .dropdown-container {
             display: none;
             padding-left: 20px;
         }
+
         .dropdown-container a {
             padding: 10px 20px;
             font-size: 16px;
@@ -64,44 +68,46 @@
             margin-left: 270px;
             padding: 20px;
             width: 100%;
-            background-color: rgba(103, 103, 103, 0.8);
+            background-color: rgba(44, 62, 80, 0.8); /* Dunklerer Hintergrund im Content */
             border-radius: 10px;
             overflow-y: auto;
             height: 100vh;
-            color: #ecf0f1;
+            color: #ecf0f1; /* Helle Schrift im Content */
         }
-        
+
         .sub-menu {
             padding-left: 20px;
         }
+
         h1 {
-            color: #f39c12;
+            color: #f39c12; /* Goldene Schriftfarbe für Titel */
         }
+
         p {
-            color: #bdc3c7
+            color: #bdc3c7; /* Etwas hellere Schrift für Paragraphen */
         }
-        
     </style>
 </head>
 <body>
 
     <!-- Sidebar -->
     <div class="sidebar">
-        <button class="dropdown-btn" conlick="toggleDropDown()">Götter</button>
+        <!-- Dropdown für die Götter -->
+        <button class="dropdown-btn" onclick="toggleDropdown()">Götter</button>
         <div class="dropdown-container">
-        <a href="#" onclick="loadMarkdown('content/Gottheiten/Anarok.md')">Anarok - Gott der Zerstörung</a>
-        <a href="#" onclick="loadMarkdown('content/Gottheiten/Dormar.md')">Dormar - Gott des Stillstandes</a>
-        <a href="#" onclick="loadMarkdown('content/Gottheiten/Elyra.md')">Elyra - Gottin der Magie</a>
-        <a href="#" onclick="loadMarkdown('content/Gottheiten/Ignara.md')">Ignara - Göttin des Feues & der Schmiede</a>
-        <a href="#" onclick="loadMarkdown('content/Gottheiten/Korrum.md')">Korrum - Gott des Verfalls</a>
-        <a href="#" onclick="loadMarkdown('content/Gottheiten/Luminara.md')">Luminara - Göttin des Lichts</a>
-        <a href="#" onclick="loadMarkdown('content/Gottheiten/Nilara.md')">Nilara - Göttin der Leere</a>
-        <a href="#" onclick="loadMarkdown('content/Gottheiten/Pandora.md')">Pandora - Göttin des Chaos</a>
-        <a href="#" onclick="loadMarkdown('content/Gottheiten/Regalis.md')">Regalis - Gott der Ordnung</a>
-        <a href="#" onclick="loadMarkdown('content/Gottheiten/Terrana.md')">Terrana - Göttin der Natur</a>
-        <a href="#" onclick="loadMarkdown('content/Gottheiten/Umbra.md')">Umbra - Göttin der Dunkelheit</a>
-        <a href="#" onclick="loadMarkdown('content/Gottheiten/Virak.md')">Virak - Gott der Alchemie</a>
-
+            <a href="#" onclick="loadMarkdown('content/Gottheiten/Anarok.md')">Anarok - Gott der Zerstörung</a>
+            <a href="#" onclick="loadMarkdown('content/Gottheiten/Dormar.md')">Dormar - Gott des Stillstandes</a>
+            <a href="#" onclick="loadMarkdown('content/Gottheiten/Elyra.md')">Elyra - Gottin der Magie</a>
+            <a href="#" onclick="loadMarkdown('content/Gottheiten/Ignara.md')">Ignara - Göttin des Feues & der Schmiede</a>
+            <a href="#" onclick="loadMarkdown('content/Gottheiten/Korrum.md')">Korrum - Gott des Verfalls</a>
+            <a href="#" onclick="loadMarkdown('content/Gottheiten/Luminara.md')">Luminara - Göttin des Lichts</a>
+            <a href="#" onclick="loadMarkdown('content/Gottheiten/Nilara.md')">Nilara - Göttin der Leere</a>
+            <a href="#" onclick="loadMarkdown('content/Gottheiten/Pandora.md')">Pandora - Göttin des Chaos</a>
+            <a href="#" onclick="loadMarkdown('content/Gottheiten/Regalis.md')">Regalis - Gott der Ordnung</a>
+            <a href="#" onclick="loadMarkdown('content/Gottheiten/Terrana.md')">Terrana - Göttin der Natur</a>
+            <a href="#" onclick="loadMarkdown('content/Gottheiten/Umbra.md')">Umbra - Göttin der Dunkelheit</a>
+            <a href="#" onclick="loadMarkdown('content/Gottheiten/Virak.md')">Virak - Gott der Alchemie</a>
+        </div>
 
         <!-- Weitere Links zu anderen Unterordnern -->
         <a href="#" onclick="loadMarkdown('Content/Geschichte.md')">soon</a>
@@ -124,6 +130,11 @@ async function loadMarkdown(path) {
 
   // Anzeige in einem Element auf der Seite
   document.getElementById("content").innerHTML = html;
+}
+
+function toggleDropdown() {
+    const dropdown = document.querySelector('.dropdown-container');
+    dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
 }
 </script>
 
