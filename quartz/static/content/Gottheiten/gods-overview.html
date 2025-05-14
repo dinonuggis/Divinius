@@ -1,108 +1,14 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Götterübersicht</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #1e1e1e;
-      color: #f5f5f5;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-    }
-
-    .header {
-      background-color: #2c3e50;
-      padding: 20px;
-      text-align: center;
-    }
-
-    .header h1 {
-      margin: 0;
-    }
-
-    .content {
-      padding: 30px;
-      flex: 1;
-      text-align: center;
-    }
-
-    .gods-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      justify-items: center;
-    }
-
-    .god-card {
-      background-color: #34495e;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      cursor: pointer;
-      transition: transform 0.2s;
-      width: 100%;
-    }
-
-    .god-card:hover {
-      transform: scale(1.05);
-      background-color: #3e5871;
-    }
-
-    .god-card h3 {
-      margin: 0;
-      font-size: 20px;
-      color: white;
-    }
-  </style>
-</head>
-<body>
-
-  <div class="header">
-    <h1>Götterübersicht</h1>
-    <button class="button" onclick="goBack()">Zurück zur Startseite</button>
+<h2>Götterübersicht</h2>
+<div class="gods-gallery">
+  <div class="god-card" onclick="loadGodInfo('Ignara')">
+    <img src="quartz/static/content/images/gottheiten/ignara.png" alt="Ignara">
+    <strong>Ignara</strong><br/>
+    <small>Göttin des Feuers & der Schmiede</small>
   </div>
-
-  <div class="content">
-    <h2>Wähle eine Gottheit</h2>
-    <div class="gods-gallery">
-      <!-- Beispiel für Anarok -->
-      <div class="god-card" onclick="loadGodInfo('Anarok')">
-        <img src="../static/content/images/gottheiten/anarok.png" alt="Anarok" />
-        <h3>Anarok</h3>
-      </div>
-      <!-- Weitere Götterkarten hinzufügen -->
-    </div>
+  <div class="god-card" onclick="loadGodInfo('Anarok')">
+    <img src="quartz/static/content/images/gottheiten/anarok.png" alt="Anarok">
+    <strong>Anarok</strong><br/>
+    <small>Gott der Zerstörung</small>
   </div>
-
-  <script>
-    // Funktion für "Zurück zur Startseite"
-    function goBack() {
-      window.history.back(); // Geht zurück zur vorherigen Seite
-    }
-
-    // Funktion zum Laden der MD-Datei für die ausgewählte Gottheit
-    function loadGodInfo(godName) {
-      fetch(`./${godName}.md`)  // Beispiel: "Anarok.md"
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Fehler beim Laden der Markdown-Datei');
-          }
-          return response.text();
-        })
-        .then(markdownText => {
-          document.body.innerHTML = markdownText;  // MD-Datei Inhalt im Body anzeigen
-        })
-        .catch(error => {
-          console.error('Fehler:', error);
-          alert('Es gab ein Problem beim Laden der Gottheit.');
-        });
-    }
-  </script>
-
-</body>
-</html>
+  <!-- Weitere Götter hier... -->
+</div>
