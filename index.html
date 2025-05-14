@@ -114,7 +114,7 @@
   <script>
     // Funktion zum Laden der Götterübersicht
     function showGodsOverview() {
-      fetch('gods-overview.html')
+      fetch('quartz/static/content/Gottheiten/gods-overview.html')
         .then(response => response.text())
         .then(html => {
           document.body.innerHTML = html; // Lade die Götterübersicht
