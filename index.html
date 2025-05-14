@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Divinius - Startseite</title>
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -32,6 +31,34 @@
       text-align: center;
     }
 
+    .categories-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      justify-items: center;
+    }
+
+    .category-card {
+      background-color: #34495e;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s;
+      width: 100%;
+    }
+
+    .category-card:hover {
+      transform: scale(1.05);
+      background-color: #3e5871;
+    }
+
+    .category-card h3 {
+      margin: 0;
+      font-size: 20px;
+      color: white;
+    }
+
     .button {
       background-color: #2980b9;
       color: white;
@@ -45,6 +72,15 @@
     .button:hover {
       background-color: #3498db;
     }
+
+    .back-button {
+      background-color: #e74c3c;
+      margin-top: 20px;
+    }
+
+    .back-button:hover {
+      background-color: #c0392b;
+    }
   </style>
 </head>
 <body>
@@ -56,23 +92,60 @@
   </div>
 
   <!-- Main Content -->
-  <div class="content">
-    <button class="button" onclick="loadGodsOverview()">Götterübersicht anzeigen</button>
+  <div class="content" id="main-content">
+    <h2>Wähle eine Kategorie</h2>
+
+    <!-- Kategorien-Galerie -->
+    <div class="categories-gallery">
+      <div class="category-card" onclick="showGodsOverview()">
+        <h3>Gottheiten</h3>
+      </div>
+      <div class="category-card" onclick="loadOtherCategory('category1')">
+        <h3>Weitere Kategorie 1</h3>
+      </div>
+      <div class="category-card" onclick="loadOtherCategory('category2')">
+        <h3>Weitere Kategorie 2</h3>
+      </div>
+      <div class="category-card" onclick="loadOtherCategory('category3')">
+        <h3>Weitere Kategorie 3</h3>
+      </div>
+    </div>
   </div>
 
   <script>
-    // Funktion, um die Götterübersicht zu laden
-    function loadGodsOverview() {
+    // Funktion zum Laden der Götterübersicht
+    function showGodsOverview() {
       fetch('gods-overview.html')
         .then(response => response.text())
         .then(html => {
           document.body.innerHTML = html; // Lade die Götterübersicht
+          addBackButton(); // Füge den "Zurück zur Startseite"-Button hinzu
         })
         .catch(error => {
           console.error('Fehler beim Laden der Götterübersicht:', error);
           document.body.innerHTML = '<p>Es gab ein Problem beim Laden der Götterübersicht. Bitte versuche es später noch einmal.</p>';
         });
     }
+
+    // Funktion für weitere Kategorien (Beispiel)
+    function loadOtherCategory(category) {
+      alert('Du hast ' + category + ' gewählt.');
+      // Hier kannst du die entsprechende Seite oder den Inhalt für die Kategorie laden.
+    }
+
+    // Funktion zum Hinzufügen des "Zurück zur Startseite"-Buttons
+    function addBackButton() {
+      const backButton = document.createElement('button');
+      backButton.classList.add('button', 'back-button');
+      backButton.textContent = 'Zurück zur Startseite';
+      backButton.onclick = function() {
+        window.location.reload(); // Seite neu laden, um zur Startseite zurückzukehren
+      };
+
+      // Füge den Button unter dem Inhalt der Götterübersicht hinzu
+      document.getElementById('main-content').appendChild(backButton);
+    }
   </script>
+
 </body>
 </html>
