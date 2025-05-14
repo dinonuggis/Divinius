@@ -1,10 +1,4 @@
-function showFrontpage() {
-  document.getElementById("content").innerHTML = `
-    <h1>Willkommen zu Divinius!</h1>
-    <p>Erkunde das Pantheon, die Geschichten und das Wissen dieser fantastischen Welt.</p>
-  `;
-}
-
+// Lädt die Übersicht
 function showGodsOverview() {
   fetch("quartz/static/content/Gottheiten/gods-overview.html")
     .then(response => response.text())
@@ -16,6 +10,7 @@ function showGodsOverview() {
     });
 }
 
+// Lädt die Markdown + Bild für eine Gottheit
 function loadGodInfo(godName) {
   fetch(`quartz/static/content/Gottheiten/${godName}.md`)
     .then(response => response.text())
