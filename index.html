@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Divinius</title>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
@@ -12,221 +12,126 @@
             padding: 0;
             display: flex;
             height: 100vh;
-            background-color: #2c3e50;
-            color: #ecf0f1;
+            background-color: #f4f4f4;
         }
 
         .sidebar {
             width: 250px;
-            background-color: rgba(44, 62, 80, 0.9);
+            background-color: rgba(44, 62, 80, 0.8);
             position: fixed;
             height: 100%;
             top: 0;
             left: 0;
             padding-top: 20px;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-            overflow-y: auto;
+            color: white;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
         }
 
-        .sidebar a, .dropdown-btn {
+        .sidebar a {
             display: block;
-            color: #ecf0f1;
+            color: white;
             padding: 12px 20px;
             text-decoration: none;
             font-size: 18px;
             transition: background-color 0.3s ease;
-            background: none;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            text-align: left;
         }
 
-        .sidebar a:hover, .dropdown-btn:hover {
+        .sidebar a:hover {
             background-color: #34495e;
-        }
-
-        .dropdown-container {
-            display: none;
-            padding-left: 20px;
-        }
-
-        .dropdown-container a {
-            font-size: 16px;
         }
 
         .content {
             margin-left: 270px;
             padding: 20px;
             width: 100%;
-            background-color: rgba(44, 62, 80, 0.8);
+            background-color: rgba(255, 255, 255, 0.8);
             border-radius: 10px;
             overflow-y: auto;
             height: 100vh;
-            color: #ecf0f1;
-        }
-
-        .logo {
-            width: 300px;
-            height: auto;
-            margin-bottom: 30px;
-        }
-
-        h1 {
-            color: #f39c12;
-        }
-
-        p {
-            color: #bdc3c7;
         }
 
         .top-bar {
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 20px;
-        }
-
-        .home-button {
-            background-color: #f39c12;
-            color: #2c3e50;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .home-button:hover {
-            background-color: #e67e22;
-        }
-
-        .frontpage {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            text-align: center;
-            height: calc(100vh - 40px);
+            background-color: #34495e;
+            color: white;
+            padding: 10px;
+            text-align: right;
         }
 
         .portrait-layout {
             display: flex;
-            gap: 40px;
-            align-items: flex-start;
-            flex-wrap: wrap;
+            flex-direction: row;
         }
 
         .text-column {
-            flex: 2;
-            min-width: 300px;
+            flex: 1;
+            padding-right: 20px;
         }
 
         .image-column {
-            flex: 1;
-            min-width: 200px;
+            flex: 0 0 200px;
             display: flex;
             justify-content: center;
+            align-items: center;
         }
 
         .portrait-img {
             max-width: 100%;
-            max-height: 400px;
-            border-radius: 12px;
-            box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+            max-height: 300px;
+            border-radius: 8px;
         }
     </style>
 </head>
 <body>
 
+    <!-- Sidebar -->
     <div class="sidebar">
-        <button class="dropdown-btn" onclick="toggleDropdown()">Götter</button>
-        <div class="dropdown-container">
-            <a href="#" onclick="loadMarkdown('content/Gottheiten/Anarok.md')">Anarok</a>
-            <a href="#" onclick="loadMarkdown('content/Gottheiten/Dormar.md')">Dormar</a>
-            <a href="#" onclick="loadMarkdown('content/Gottheiten/Elyra.md')">Elyra</a>
-            <a href="#" onclick="loadMarkdown('content/Gottheiten/Ignara.md')">Ignara</a>
-            <a href="#" onclick="loadMarkdown('content/Gottheiten/Korrum.md')">Korrum</a>
-            <a href="#" onclick="loadMarkdown('content/Gottheiten/Luminara.md')">Luminara</a>
-            <a href="#" onclick="loadMarkdown('content/Gottheiten/Nilara.md')">Nilara</a>
-            <a href="#" onclick="loadMarkdown('content/Gottheiten/Pandora.md')">Pandora</a>
-            <a href="#" onclick="loadMarkdown('content/Gottheiten/Regalis.md')">Regalis</a>
-            <a href="#" onclick="loadMarkdown('content/Gottheiten/Terrana.md')">Terrana</a>
-            <a href="#" onclick="loadMarkdown('content/Gottheiten/Umbra.md')">Umbra</a>
-            <a href="#" onclick="loadMarkdown('content/Gottheiten/Virak.md')">Virak</a>
-        </div>
-        <a href="#" onclick="loadMarkdown('content/Geschichte.md')">Geschichte</a>
-        <a href="#" onclick="loadMarkdown('content/Allgemeine Einleitung.md')">Einleitung</a>
+        <a href="#" onclick="loadMarkdown('content/Gottheiten/Anarok.md', 'images/gottheiten/anarok.png')">Anarok - Gott der Zerstörung</a>
+        <a href="#" onclick="loadMarkdown('content/Gottheiten/Dormar.md', 'images/gottheiten/dormar.png')">Dormar - Gott des Stillstandes</a>
+        <!-- Weitere Götter hier -->
     </div>
 
+    <!-- Inhalt -->
     <div class="content" id="content">
-        <!-- Frontpage wird hier geladen -->
+        <h1>Willkommen zu Divinius!</h1>
+        <p>Hier kannst du die Geschichte von Divinius entdecken.</p>
     </div>
 
-    <script>
-        function showFrontpage() {
-            document.getElementById("content").innerHTML = `
-                <div class="top-bar"></div>
-                <div class="frontpage">
-                    <svg class="logo" viewBox="0 0 500 100" xmlns="http://www.w3.org/2000/svg">
-                        <text x="50%" y="60%" text-anchor="middle" font-size="48" fill="#f39c12" font-family="Georgia, serif">
-                            Divinius
-                        </text>
-                    </svg>
-                    <h1>Willkommen zu Divinius!</h1>
-                    <p>Tritt ein in eine Welt voller Magie, Götter und Geheimnisse.</p>
+<script>
+    // Funktion zum Laden des Markdown-Inhalts und Bildes
+    async function loadMarkdown(path, imagePath = null) {
+        const res = await fetch(path);
+        const text = await res.text();
+        const html = marked.parse(text); // Markdown zu HTML
+
+        // Bild-HTML generieren, falls ein Bildpfad übergeben wurde
+        const imageHTML = imagePath 
+            ? `<img src="${imagePath}" alt="Götterbild" class="portrait-img">`
+            : '';
+
+        // HTML zusammenstellen
+        document.getElementById("content").innerHTML = `
+            <div class="top-bar">
+                <button class="home-button" onclick="showFrontpage()">Zurück zur Startseite</button>
+            </div>
+            <div class="portrait-layout">
+                <div class="text-column">
+                    ${html}
                 </div>
-            `;
-        }
-
-async function loadMarkdown(path) {
-    const res = await fetch(path);
-    const text = await res.text();
-
-    // Extrahiere Frontmatter aus der Markdown-Datei (Beispiel mit regex)
-    const frontmatterRegex = /---\n([\s\S]+?)\n---/;
-    const match = text.match(frontmatterRegex);
-    let imagePath = null;
-
-    if (match) {
-        const frontmatter = match[1];
-        const imageMatch = frontmatter.match(/image:\s*(.*)/);
-        if (imageMatch) {
-            imagePath = imageMatch[1].trim();
-        }
+                <div class="image-column">
+                    ${imageHTML}
+                </div>
+            </div>
+        `;
     }
 
-    // Markdown-Inhalt parsen
-    const html = marked.parse(text.replace(frontmatterRegex, ''));
-
-    // HTML für das Bild
-    const imageHTML = imagePath 
-        ? `<img src="${imagePath}" alt="Götterbild" class="portrait-img">` 
-        : '';
-
-    document.getElementById("content").innerHTML = `
-        <div class="top-bar">
-            <button class="home-button" onclick="showFrontpage()">Zurück zur Startseite</button>
-        </div>
-        <div class="portrait-layout">
-            <div class="text-column">
-                ${html}
-            </div>
-            <div class="image-column">
-                ${imageHTML}
-            </div>
-        </div>
-    `;
-}
-
-        function toggleDropdown() {
-            const dropdown = document.querySelector('.dropdown-container');
-            dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
-        }
-
-        // Initiale Anzeige
-        showFrontpage();
-    </script>
+    // Funktion für Startseite (optional)
+    function showFrontpage() {
+        document.getElementById("content").innerHTML = `
+            <h1>Willkommen zu Divinius!</h1>
+            <p>Hier kannst du die Geschichte von Divinius entdecken.</p>
+        `;
+    }
+</script>
 
 </body>
 </html>
