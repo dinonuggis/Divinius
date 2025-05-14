@@ -90,7 +90,7 @@
 
     // Lädt die Götterübersicht von einer externen HTML-Datei
     function loadGodsOverview() {
-      fetch('gods-overview.html')
+      fetch('quartz/static/content/Gottheiten/gods-overview.html')
         .then(response => response.text())
         .then(html => {
           document.getElementById('content').innerHTML = html;
