@@ -16,18 +16,22 @@
   function showHome() {
     const content = document.getElementById('content');
     content.innerHTML = `
-      <h1>Willkommen zu Divinius!</h1>
-      <div class="category-gallery">
-        <div class="category-card" onclick="showGodsOverview()">
-          Götter
-        </div>
-        <div class="category-card" onclick="showRealm()">
-          Reiche
-        </div>
-      </div>
-    `;
+    <div id="startseite" style="text-align: center; color: #ffffff; padding: 2rem; background-color: #1e1e2f; border-radius: 16px; max-width: 800px; margin: 2rem auto; box-shadow: 0 0 10px rgba(0,0,0,0.5);">
+     <h1 style="font-size: 2.5rem; color: #FFD700;">Willkommen zu Divinius!</h1>
+     <p style="font-size: 1.2rem; color: #DDDDDD;">
+       Dies ist ein fiktives Werk von mir, <span style="color: #87CEEB; font-weight: bold;">DinoNuggis</span>.
+     </p>
+     <p style="font-size: 1rem; color: #CCCCCC;">
+       Hier findet ihr alle aktuellen Infos und Chapters – aber bitte beachtet, dass ich das hier eher als Hobby sehe und nicht jeden Tag Updates kommen werden.
+     </p>
+     <p style="font-size: 1rem; color: #AAAAAA;">
+       Sprich: Einige Inhalte mögen eventuell noch leer sein.
+     </p>
+    </div>
+     `;
   }
 </script>
+  
   
   <!-- Sidebar -->
   <div id="sidebar" class="sidebar">
@@ -44,19 +48,6 @@
     </ul>
   </div>
   
-  <!-- Hauptinhalt -->
-  <div class="content" id="content">
-    <h1>Willkommen zu Divinius!</h1>
-
-    <div class="category-gallery">
-      <div class="category-card" onclick="showGodsOverview()">
-        Götter
-      </div>
-      <div class="category-card" onclick="showRealm()">
-        Reiche
-      </div>
-    </div>
-  </div>
 
 </body>
 </html>
