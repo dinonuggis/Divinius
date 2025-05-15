@@ -92,7 +92,8 @@ document.addEventListener("keydown", (event) => {
       currentChapterIndex--;
       updateChapter();
     }
-  } else if (event.key === "ArrowRight") {
+  } 
+  else if (event.key === "ArrowRight") {
     if (currentChapterIndex < chapters.lenght - 1) {
       currentChapterIndex++;
       updateChapter();
