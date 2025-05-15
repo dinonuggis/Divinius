@@ -45,7 +45,7 @@ function loadbeastsInfo(beastName) {
         <div class="portrait-layout">
           <div class="text-column">${html}</div>
           <div class="image-column">
-            <img src="${imgPath}" alt="${beastsName}" />
+            <img src="${imgPath}" alt="${beastName}" />
           </div>
         </div>
       `;
