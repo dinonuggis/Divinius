@@ -301,13 +301,31 @@ body {
 
 /* Unterscheidung bei Bedarf */
 .top-nav {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  padding: 1rem;
   border-bottom: 1px solid #e0e0e0;
-  padding-bottom: 1rem;
+  z-index: 1000;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }
 
 .bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white; /* Optional: Hintergrund, damit es lesbar bleibt */
+  padding: 1rem;
   border-top: 1px solid #e0e0e0;
-  padding-top: 1rem;
+  z-index: 1000;
+  display: flex;
+  gap: 1rem; /* Abstand zwischen Button und Select */
+  align-items: center;
 }
 
 /* Responsive Anpassung */
@@ -321,4 +339,8 @@ body {
   .chapter-nav select {
     width: 100%;
   }
+}
+body {
+  padding-top: 80px;   /* Höhe deiner .top-nav */
+  padding-bottom: 80px; /* Höhe deiner .bottom-nav */
 }
