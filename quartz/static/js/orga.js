@@ -28,8 +28,8 @@ function showorga() {
 
 // Einzelnen Gott laden
 function loadorgaInfo(orgaName) {
-  const mdPath = `quartz/static/content/Gottheiten/${orgaName}.md`;
-  const imgPath = `quartz/static/images/gottheiten/${orgaName.toLowerCase()}.png`;
+  const mdPath = `quartz/static/content/orga/${orgaName}.md`;
+  const imgPath = `quartz/static/images/orga/${orgaName.toLowerCase()}.png`;
 
   fetch(mdPath)
     .then(response => {
