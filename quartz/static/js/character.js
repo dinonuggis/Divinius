@@ -2,18 +2,18 @@
 function showFrontpage() {
   document.getElementById("content").innerHTML = `
     <h1>Willkommen zu Divinius!</h1>
-    <p>Erkunde das Pantheon, die Geschichten und das Wissen dieser fantastischen Welt.</p>
+    <p></p>
     <div class="category-gallery">
-      <div class="category-card" onclick="showGodsOverview()">
-        Gottheiten
+      <div class="category-card" onclick="showcharacter()">
+        Charakter
       </div>
     </div>
   `;
 }
 
-// Götterübersicht laden
+// Charakter laden
 function showcharacter() {
-  fetch("quartz/static/content/Gottheiten/gods-overview.html")
+  fetch("quartz/static/content/character/character.html")
     .then(response => {
       if (!response.ok) throw new Error("Datei nicht gefunden");
       return response.text();
@@ -22,7 +22,7 @@ function showcharacter() {
       document.getElementById("content").innerHTML = html;
     })
     .catch(err => {
-      console.error("Fehler beim Laden der Götterübersicht:", err);
+      console.error("Fehler beim Laden der Charakter:", err);
     });
 }
 
@@ -45,7 +45,7 @@ function loadCharacterInfo(characterName) {
         <div class="portrait-layout">
           <div class="text-column">${html}</div>
           <div class="image-column">
-            <img src="${imgPath}" alt="${CharacterName}" />
+            <img src="${imgPath}" alt="${characterName}" />
           </div>
         </div>
       `;
