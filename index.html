@@ -12,10 +12,27 @@
 </head>
 <body>
 
+  <script>
+  function showHome() {
+    const content = document.getElementById('content');
+    content.innerHTML = `
+      <h1>Willkommen zu Divinius!</h1>
+      <div class="category-gallery">
+        <div class="category-card" onclick="showGodsOverview()">
+          Götter
+        </div>
+        <div class="category-card" onclick="showRealm()">
+          Reiche
+        </div>
+      </div>
+    `;
+  }
+</script>
+  
   <!-- Sidebar -->
   <div id="sidebar" class="sidebar">
     <ul>
-      <li><a href="#">Dino</a></li>
+      <li><a href="#" onclick="showHome()">Startseite</a></li>
       <li><a href="#">Nuggets</a></li>
       <li><a href="#">sind</a></li>
       <li><a href="#">komplett</a></li>
