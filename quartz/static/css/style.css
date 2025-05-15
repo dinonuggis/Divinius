@@ -21,7 +21,7 @@ body {
 /* Sidebar */
 .sidebar {
   width: 200px;
-  background-color: #000000;
+  background-color: linear-gradient(135deg, #0d0d0d, #1a1a2e);
   padding-top: 20px;
   height: 100vh;
   overflow-y: auto;
@@ -85,13 +85,13 @@ body {
 /* Götterübersicht */
 .gods-gallery {
   display: grid;
-  grid-template-columns: repeat(4, minmax(200px, 1fr)); /* 4 Götter pro Zeile */
+  grid-template-columns: repeat(6, minmax(200px, 1fr)); /* 4 Götter pro Zeile */
   gap: 5px;
   margin-top: 5px;
 }
 
 .god-card {
-  background-color: #403e3e;
+  background-color: linear-gradient(135deg, #0d0d0d, #1a1a2e);
   padding: 5px;
   border-radius: 5px;
   text-align: center;
@@ -101,12 +101,12 @@ body {
 
 .god-card:hover {
   transform: scale(1.05);
-  background-color: #403e3e;
+  background-color: #9000ff;
 }
 
 .god-card img {
   width: 100%;
-  height: auto;
+  height: 200px;
   object-fit: contain;
   background-color: #1a1a1a
   border-radius: 5px;
