@@ -4,16 +4,16 @@ function showFrontpage() {
     <h1>Willkommen zu Divinius!</h1>
     <p>Erkunde das Pantheon, die Geschichten und das Wissen dieser fantastischen Welt.</p>
     <div class="category-gallery">
-      <div class="category-card" onclick="showGodsOverview()">
+      <div class="category-card" onclick="showbeasts()">
         Gottheiten
       </div>
     </div>
   `;
 }
 
-// Götterübersicht laden
-function showGodsOverview() {
-  fetch("quartz/static/content/Gottheiten/gods-overview.html")
+// Bestiarium laden
+function showbeasts() {
+  fetch("quartz/static/content/beasts/beasts.html")
     .then(response => {
       if (!response.ok) throw new Error("Datei nicht gefunden");
       return response.text();
@@ -22,14 +22,14 @@ function showGodsOverview() {
       document.getElementById("content").innerHTML = html;
     })
     .catch(err => {
-      console.error("Fehler beim Laden der Götterübersicht:", err);
+      console.error("Fehler beim Laden des Bestiariums:", err);
     });
 }
 
 // Einzelnen Gott laden
-function loadGodInfo(godName) {
-  const mdPath = `quartz/static/content/Gottheiten/${godName}.md`;
-  const imgPath = `quartz/static/images/gottheiten/${godName.toLowerCase()}.png`;
+function loadbeastsInfo(beastName) {
+  const mdPath = `quartz/static/content/beasts/${beastName}.md`;
+  const imgPath = `quartz/static/images/beasts/${beastName.toLowerCase()}.png`;
 
   fetch(mdPath)
     .then(response => {
@@ -40,17 +40,17 @@ function loadGodInfo(godName) {
       const html = marked.parse(markdown);
       document.getElementById("content").innerHTML = `
         <div class="top-bar">
-          <button class="home-button" onclick="showGodsOverview()">Zurück zur Übersicht</button>
+          <button class="home-button" onclick="showbeasts()">Zurück zur Übersicht</button>
         </div>
         <div class="portrait-layout">
           <div class="text-column">${html}</div>
           <div class="image-column">
-            <img src="${imgPath}" alt="${godName}" />
+            <img src="${imgPath}" alt="${beastsName}" />
           </div>
         </div>
       `;
     })
     .catch(err => {
-      console.error("Fehler beim Laden der Gottheit:", err);
+      console.error("Fehler beim Laden des Bestiariums.", err);
     });
 }
