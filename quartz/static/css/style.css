@@ -239,108 +239,30 @@ body {
 }
 
 
-/* Grundlayout */
-.chapter-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  margin: 1.5rem 0;
-  flex-wrap: wrap;
-}
-
-/* Kapitel-Content Styling */
-.chapter-content {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 1.5rem;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  background-color: #000000;
+/* Fixierter Container unten zentriert */
+.bottom-dropdown {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  padding: 1rem;
+  border: 1px solid #ccc;
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 }
 
-/* Dropdown-Styling */
-.chapter-nav select {
+/* Styling für das Select-Menü */
+.bottom-dropdown select {
   padding: 0.5rem 1rem;
   font-size: 1rem;
-  border: 1px solid #ccc;
   border-radius: 6px;
-  background-color: white;
+  border: 1px solid #ccc;
   cursor: pointer;
-  transition: border-color 0.2s ease-in-out;
 }
 
-.chapter-nav select:hover,
-.chapter-nav select:focus {
+.bottom-dropdown select:focus {
   border-color: #007acc;
   outline: none;
-}
-
-/* Button-Styling */
-.chapter-nav button {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  background-color: #007acc;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-}
-
-.chapter-nav button:hover:enabled {
-  background-color: #005fa3;
-}
-
-.chapter-nav button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-/* Unterscheidung bei Bedarf */
-.top-nav {
-  position: fixed;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  background: white;
-  padding: 1rem;
-  border-bottom: 1px solid #e0e0e0;
-  z-index: 1000;
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
-
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  background: white; /* Optional: Hintergrund, damit es lesbar bleibt */
-  padding: 1rem;
-  border-top: 1px solid #e0e0e0;
-  z-index: 1000;
-  display: flex;
-  gap: 1rem; /* Abstand zwischen Button und Select */
-  align-items: center;
-}
-
-/* Responsive Anpassung */
-@media (max-width: 600px) {
-  .chapter-nav {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .chapter-nav button,
-  .chapter-nav select {
-    width: 100%;
-  }
-}
-body {
-  padding-top: 80px;   /* Höhe deiner .top-nav */
-  padding-bottom: 80px; /* Höhe deiner .bottom-nav */
 }
