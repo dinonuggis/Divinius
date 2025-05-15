@@ -1,4 +1,4 @@
-# **Evil – Der Flammenwolf 
+# Evil – Der Flammenwolf 
 
 ---
 
