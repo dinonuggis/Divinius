@@ -86,3 +86,16 @@ function loadChapter(index) {
       console.error(err);
     });
 }
+document.addEventListener("keydown", (event) => {
+  if (event.key === "ArrowLeft") {
+    if (currentChapterIndex > 0) {
+      currentChapterIndex--;
+      updateChapter();
+    }
+  } else if (event.key === "ArrowRight") {
+    if (currentChapterIndex < chapters.lenght - 1) {
+      currentChapterIndex++;
+      updateChapter();
+    }
+  }
+});
