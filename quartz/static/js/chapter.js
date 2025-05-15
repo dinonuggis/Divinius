@@ -87,14 +87,18 @@ function loadChapter(index) {
     });
 }
 document.addEventListener("keydown", (event) => {
+  const tag = document.activeElement.tagName.toLowerCase();
+
+  // Keine Pfeilnavigation, wenn Fokus auf Eingabefeld, Textarea oder Dropdown liegt
+  if (["input", "textarea", "select"].includes(tag)) return;
+
   if (event.key === "ArrowLeft") {
     if (currentChapterIndex > 0) {
       currentChapterIndex--;
       updateChapter();
     }
-  } 
-  else if (event.key === "ArrowRight") {
-    if (currentChapterIndex < chapters.lenght - 1) {
+  } else if (event.key === "ArrowRight") {
+    if (currentChapterIndex < chapters.length - 1) {
       currentChapterIndex++;
       updateChapter();
     }
