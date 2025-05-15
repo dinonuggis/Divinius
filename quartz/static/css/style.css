@@ -124,7 +124,7 @@ body {
 /* Reichübersicht */
 .realm-gallery {
   display: grid;
-  grid-template-columns: repeat(1, minmax(600px, 1fr)); /* 1 Reich pro Zeile */
+  grid-template-columns: repeat(1, minmax(300px, 1fr)); /* 1 Reich pro Zeile */
   gap: 5px;
   margin-top: 5px;
 }
@@ -145,7 +145,7 @@ body {
 
 .realm-card img {
   width: 100%;
-  height: 150px;
+  height: 100px;
   object-fit: cover;
   border-radius: 5px;
   margin-bottom: 5px;
@@ -165,7 +165,7 @@ body {
 }
 
 .portrait-layout .image-column img {
-  max-width: 600px;
+  max-width: 300px;
   width: 100%;
   border-radius: 10px;
 }
