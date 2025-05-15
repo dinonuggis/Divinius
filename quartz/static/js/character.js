@@ -12,7 +12,7 @@ function showFrontpage() {
 }
 
 // Götterübersicht laden
-function showGodsOverview() {
+function showcharacter() {
   fetch("quartz/static/content/Gottheiten/gods-overview.html")
     .then(response => {
       if (!response.ok) throw new Error("Datei nicht gefunden");
@@ -27,9 +27,9 @@ function showGodsOverview() {
 }
 
 // Einzelnen Gott laden
-function loadGodInfo(godName) {
-  const mdPath = `quartz/static/content/Gottheiten/${godName}.md`;
-  const imgPath = `quartz/static/images/gottheiten/${godName.toLowerCase()}.png`;
+function loadCharacterInfo(characterName) {
+  const mdPath = `quartz/static/content/character/${characterName}.md`;
+  const imgPath = `quartz/static/images/character/${characterName.toLowerCase()}.png`;
 
   fetch(mdPath)
     .then(response => {
@@ -40,12 +40,12 @@ function loadGodInfo(godName) {
       const html = marked.parse(markdown);
       document.getElementById("content").innerHTML = `
         <div class="top-bar">
-          <button class="home-button" onclick="showGodsOverview()">Zurück zur Übersicht</button>
+          <button class="home-button" onclick="showcharacter()">Zurück zur Übersicht</button>
         </div>
         <div class="portrait-layout">
           <div class="text-column">${html}</div>
           <div class="image-column">
-            <img src="${imgPath}" alt="${godName}" />
+            <img src="${imgPath}" alt="${CharacterName}" />
           </div>
         </div>
       `;
