@@ -238,48 +238,6 @@ body {
   to { transform: translateX(-100%); }
 }
 
-/* Kapitel-Content Bereich */
-.chapter-content {
-  flex: 1;
-  overflow-y: auto;
-  padding-bottom: 1rem;
-}
-
-/* Navigation unten zentriert */
-.chapter-nav {
-  display: flex;
-  justify-content: center;  /* Zentriert die Buttons horizontal */
-  align-items: center;
-  gap: 1rem;                /* Abstand zwischen den Buttons */
-  padding: 0.5rem 0;
-  background-color: #1e1e2f;
-  border-radius: 10px;
-  margin-top: 1rem;
-}
-
-/* Buttons und Select optisch einheitlich */
-.chapter-nav button,
-.chapter-nav select {
-  padding: 8px 16px;
-  font-size: 14px;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-  background-color: #333366;
-  color: white;
-  transition: background-color 0.3s ease;
-}
-
-.chapter-nav button:disabled {
-  cursor: default;
-  background-color: #666699;
-  color: #cccccc;
-}
-
-.chapter-nav button:hover:not(:disabled),
-.chapter-nav select:hover {
-  background-color: #5555aa;
-}
 
 /* Grundlayout */
 .chapter-nav {
