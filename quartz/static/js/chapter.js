@@ -1,7 +1,14 @@
 const chapters = [
-  "kapitel1.md",
-  "kapitel2.md",
-  "kapitel3.md",
+  "1.md",
+  "2.md",
+  "3.md",
+  "4.md",
+  "5.md",
+  "6.md",
+  "7.md",
+  "8.md",
+  "9.md",
+  "10.md",
   // ... weitere Kapitel hier ergänzen
 ];
 
