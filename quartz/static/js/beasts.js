@@ -2,10 +2,10 @@
 function showFrontpage() {
   document.getElementById("content").innerHTML = `
     <h1>Willkommen zu Divinius!</h1>
-    <p>Erkunde das Pantheon, die Geschichten und das Wissen dieser fantastischen Welt.</p>
+    <p>Erkunde die Bestien, die Geschichten und das Wissen dieser fantastischen Welt.</p>
     <div class="category-gallery">
       <div class="category-card" onclick="showbeasts()">
-        Gottheiten
+        Bestien
       </div>
     </div>
   `;
