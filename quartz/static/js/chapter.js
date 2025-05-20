@@ -76,8 +76,9 @@ function loadChapter(index) {
     })
     .then(markdown => {
       chapterContent.innerHTML = marked.parse(markdown);
-      // Optional: Scroll zum Kapitelanfang
-      chapterContent.scrollTop = 0;
+	  const spacer = document.createElement("div");
+	  spacer.style.height = "120px";
+	  chapterContent.appendChild(spacer);
     })
     .catch(err => {
       chapterContent.textContent = "Fehler beim Laden des Kapitels.";
