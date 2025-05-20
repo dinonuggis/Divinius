@@ -4,6 +4,8 @@ const chapters = [
   "2.md",
   "3.md",
   "4.md",
+  "5.md",
+  "6.md",
 
   // ... weitere Kapitel hier ergänzen
 ];
